@@ -10,17 +10,45 @@ import SwiftUI
 struct HomePageView: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Home")
+            
+            Text("For you")
+            Divider()
+                .padding(.horizontal, 150)
+            
+            Spacer()
+            
+            ZStack {
+                Rectangle()
+                    .fill(.black)
+                    .frame(width: 325, height: 525)
+                    .cornerRadius(40)
+                    .overlay {
+                        VStack {
+                            VStack (spacing: 0) {
+                                Text("Dune: Part Two")
+                                    .foregroundStyle(.white)
+                                .font(.title)
+                                .padding(.bottom, 10)
+                                
+                                Divider()
+                                    .overlay(.white)
+                                    .padding(.horizontal, 60)
+                            }
+                            .padding(.top, 25)
+                            
+                            Spacer()
+                            
+                            
+                        }
+                    }
+            }
+            
+            Spacer()
         }
-        .padding()
     }
 }
 
 #Preview {
-    //ContentView()
     
     TabView() {
         
@@ -79,4 +107,5 @@ struct HomePageView: View {
     .accentColor(
         .blue
     )
+    
 }
