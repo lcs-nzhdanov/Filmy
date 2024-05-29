@@ -13,6 +13,7 @@ struct HomePageView: View {
             
             Text("For you")
             Divider()
+                .overlay(.white)
                 .padding(.horizontal, 150)
             
             Spacer()
@@ -35,10 +36,24 @@ struct HomePageView: View {
                                     .padding(.horizontal, 60)
                             }
                             .padding(.top, 25)
+                            .padding(.bottom, 10)
+                            
+                            Image(.duneP1)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                            
+                            VStack (spacing: 0) {
+                                Text("2024")
+                                
+                                Text("Sci-fi")
+                                
+                                Text("2h 46m")
+                                
+                                Text("On netflix")
+                                    
+                            }
                             
                             Spacer()
-                            
-                            
                         }
                     }
             }
@@ -53,6 +68,7 @@ struct HomePageView: View {
     TabView() {
         
         HomePageView()
+            .preferredColorScheme(.dark)
             .tabItem {
                 Image(
                     systemName: "house.fill"
