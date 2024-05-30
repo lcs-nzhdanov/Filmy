@@ -21,7 +21,7 @@ struct HomePageView: View {
             ZStack {
                 Rectangle()
                     .fill(.black)
-                    .frame(width: 325, height: 525)
+                    .frame(width: 325, height: 550)
                     .cornerRadius(40)
                     .overlay {
                         VStack {
@@ -30,6 +30,7 @@ struct HomePageView: View {
                                     .foregroundStyle(.white)
                                 .font(.title)
                                 .padding(.bottom, 10)
+                                .bold()
                                 
                                 Divider()
                                     .overlay(.white)
@@ -41,16 +42,71 @@ struct HomePageView: View {
                             Image(.duneP1)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
+                                .padding(.horizontal, 8)
+                            
+                            Divider()
+                                .overlay(.white)
+                                .padding(.horizontal, 60)
+                                .padding(.vertical, 5)
                             
                             VStack (spacing: 0) {
-                                Text("2024")
                                 
-                                Text("Sci-fi")
-                                
-                                Text("2h 46m")
-                                
-                                Text("On netflix")
+                                Group {
+                                    Text("2024")
                                     
+                                    Text("Sci-fi")
+                                    
+                                    Text("2h 46m")
+                                    
+                                    Text("On netflix")
+                                }
+                                .font(.system(size: 20))
+                                .padding(.bottom, 10)
+                                .foregroundStyle(.white)
+                                
+                                Divider()
+                                    .overlay(.white)
+                                    .padding(.horizontal, 60)
+                                    .padding(.vertical, 5)
+                            }
+                            
+                            HStack {
+                                Spacer()
+                                
+                                Button {
+                                    print("Edit button was tapped")
+                                } label: {
+                                    VStack (spacing: 0) {
+                                        Image(systemName: "ellipsis.circle")
+                                            .font(.system(size: 44))
+                                            .padding(.bottom, 3)
+                                            .bold()
+                                        Text("More")
+                                            .font(.system(size: 18))
+                                            .bold()
+                                    }
+                                }
+                                .padding(.horizontal, 20)
+                                
+                                Spacer()
+                                
+                                Button {
+                                    print("Edit button was tapped")
+                                } label: {
+                                    VStack (spacing: 0) {
+                                        Image(systemName: "seal")
+                                            .font(.system(size: 44))
+                                            .padding(.bottom, 3)
+                                            .bold()
+                                        Text("To Watch")
+                                            .font(.system(size: 18))
+                                            .bold()
+                                    }
+                                }
+                                .padding(.horizontal, 20)
+                                .foregroundStyle(.white)
+                                
+                                Spacer()
                             }
                             
                             Spacer()
@@ -68,7 +124,7 @@ struct HomePageView: View {
     TabView() {
         
         HomePageView()
-            .preferredColorScheme(.dark)
+            //   .preferredColorScheme(.dark)
             .tabItem {
                 Image(
                     systemName: "house.fill"
