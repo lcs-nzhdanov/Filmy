@@ -14,6 +14,7 @@
 		82A09D772C076C7900D85301 /* LibraryPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A09D762C076C7900D85301 /* LibraryPageView.swift */; };
 		82A09D792C076C8500D85301 /* SearchPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A09D782C076C8500D85301 /* SearchPageView.swift */; };
 		82A09D7B2C076C9A00D85301 /* ProfilePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A09D7A2C076C9A00D85301 /* ProfilePageView.swift */; };
+		82A09D7D2C08DE6600D85301 /* MovieDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A09D7C2C08DE6600D85301 /* MovieDataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		82A09D762C076C7900D85301 /* LibraryPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryPageView.swift; sourceTree = "<group>"; };
 		82A09D782C076C8500D85301 /* SearchPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPageView.swift; sourceTree = "<group>"; };
 		82A09D7A2C076C9A00D85301 /* ProfilePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageView.swift; sourceTree = "<group>"; };
+		82A09D7C2C08DE6600D85301 /* MovieDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 		82A09D732C076BBF00D85301 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				82A09D7C2C08DE6600D85301 /* MovieDataModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				82A09D672C07699000D85301 /* HomePageView.swift in Sources */,
 				82A09D7B2C076C9A00D85301 /* ProfilePageView.swift in Sources */,
 				82A09D772C076C7900D85301 /* LibraryPageView.swift in Sources */,
+				82A09D7D2C08DE6600D85301 /* MovieDataModel.swift in Sources */,
 				82A09D652C07699000D85301 /* FilmyApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -26,7 +26,7 @@ struct HomePageView: View {
                     .overlay {
                         VStack {
                             VStack (spacing: 0) {
-                                Text("Dune: Part Two")
+                                Text(DunePartTwo.name)
                                     .foregroundStyle(.white)
                                     .font(.title)
                                     .padding(.bottom, 10)
@@ -70,7 +70,7 @@ struct HomePageView: View {
                             VStack (spacing: 0) {
                                 
                                 Group {
-                                    Text("2024")
+                                    Text(DunePartTwo.year)
                                     
                                     Text("Sci-fi")
                                     
@@ -109,7 +109,7 @@ struct HomePageView: View {
                                 Spacer()
                                 
                                 Button {
-                                    print("Edit button was tapped")
+                                   // DunePartTwo.isToWatch.toggle()
                                 } label: {
                                     VStack (spacing: 0) {
                                         Image(systemName: "seal")
