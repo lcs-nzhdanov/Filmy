@@ -28,9 +28,9 @@ struct HomePageView: View {
                             VStack (spacing: 0) {
                                 Text("Dune: Part Two")
                                     .foregroundStyle(.white)
-                                .font(.title)
-                                .padding(.bottom, 10)
-                                .bold()
+                                    .font(.title)
+                                    .padding(.bottom, 10)
+                                    .bold()
                                 
                                 Divider()
                                     .overlay(.white)
@@ -39,10 +39,28 @@ struct HomePageView: View {
                             .padding(.top, 25)
                             .padding(.bottom, 10)
                             
-                            Image(.duneP1)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .padding(.horizontal, 8)
+                            TabView {
+                                // Future automatic image adding
+                                
+//                                ForEach (1 ..< 2) { index in
+//                                Image("duneP\(index)")
+//                                    .resizable()
+//                                    .aspectRatio(contentMode: .fit)
+//                                    .padding(.horizontal, 8)
+                                
+                                Image(.duneP1)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.horizontal, 8)
+                                
+                                Image(.duneP1)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .padding(.horizontal, 8)
+//                                }
+                            }
+                            .tabViewStyle(.page)
+                            .indexViewStyle(.page(backgroundDisplayMode: .always))
                             
                             Divider()
                                 .overlay(.white)
@@ -124,7 +142,7 @@ struct HomePageView: View {
     TabView() {
         
         HomePageView()
-            //   .preferredColorScheme(.dark)
+        //   .preferredColorScheme(.dark)
             .tabItem {
                 Image(
                     systemName: "house.fill"
