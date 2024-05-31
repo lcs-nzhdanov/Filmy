@@ -65,11 +65,11 @@ struct MovieBox: View {
                         VStack (spacing: 0) {
                             
                             Group {
-                                Text(DunePartTwo.year)
+                                Text(movie.year)
                                 
                                 Text("Sci-fi")
                                 
-                                Text(minutesToHours(lengthMinutes: 166))
+                                Text(movie.length)
                                 
                                 Text("On netflix")
                             }

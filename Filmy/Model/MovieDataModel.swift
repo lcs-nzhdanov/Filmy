@@ -17,16 +17,16 @@ func minutesToHours(lengthMinutes: Int) -> String {
 @Observable
 class MovieDetails {
     let name: String
-    let lengthMinutes: Int
+    let length: String
     let year: String
     
     var isToWatch: Bool
     
     
     
-    init(name: String, lengthMinutes: Int, year: String, isToWatch: Bool) {
+    init(name: String, length: String, year: String, isToWatch: Bool) {
         self.name = name
-        self.lengthMinutes = lengthMinutes
+        self.length = length
         self.year = year
         self.isToWatch = isToWatch
     }
@@ -34,4 +34,4 @@ class MovieDetails {
 
 
 
-let DunePartTwo = MovieDetails(name: "Dune: Part Two", year: "2024", isToWatch: true)
+let DunePartTwo = MovieDetails(name: "Dune: Part Two", length: minutesToHours(lengthMinutes: 166), year: "2024", isToWatch: true)
