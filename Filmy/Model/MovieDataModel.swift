@@ -7,18 +7,26 @@
 
 import Foundation
 
+func minutesToHours(lengthMinutes: Int) -> String {
+    let hours: Int = lengthMinutes / 60
+    let minutes: Int = lengthMinutes % 60
+    
+    return (minutes == 0 ? "\(hours)h": "\(hours)h \(minutes)m")
+}
+
 @Observable
 class MovieDetails {
     let name: String
-        
+    let lengthMinutes: Int
     let year: String
     
     var isToWatch: Bool
     
     
     
-    init(name: String, year: String, isToWatch: Bool) {
+    init(name: String, lengthMinutes: Int, year: String, isToWatch: Bool) {
         self.name = name
+        self.lengthMinutes = lengthMinutes
         self.year = year
         self.isToWatch = isToWatch
     }

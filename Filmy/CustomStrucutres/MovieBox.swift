@@ -69,7 +69,7 @@ struct MovieBox: View {
                                 
                                 Text("Sci-fi")
                                 
-                                Text("2h 46m")
+                                Text(minutesToHours(lengthMinutes: 166))
                                 
                                 Text("On netflix")
                             }
