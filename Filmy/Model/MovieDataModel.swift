@@ -7,14 +7,23 @@
 
 import Foundation
 
-
-struct MovieDetails {
+@Observable
+class MovieDetails {
     let name: String
         
     let year: String
     
-    let isToWatch: Bool
+    var isToWatch: Bool
+    
+    
+    
+    init(name: String, year: String, isToWatch: Bool) {
+        self.name = name
+        self.year = year
+        self.isToWatch = isToWatch
+    }
 }
+
 
 
 let DunePartTwo = MovieDetails(name: "Dune: Part Two", year: "2024", isToWatch: true)

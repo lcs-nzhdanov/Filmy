@@ -15,6 +15,7 @@
 		82A09D792C076C8500D85301 /* SearchPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A09D782C076C8500D85301 /* SearchPageView.swift */; };
 		82A09D7B2C076C9A00D85301 /* ProfilePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A09D7A2C076C9A00D85301 /* ProfilePageView.swift */; };
 		82A09D7D2C08DE6600D85301 /* MovieDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A09D7C2C08DE6600D85301 /* MovieDataModel.swift */; };
+		82A09D812C0A4D2200D85301 /* MovieBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A09D802C0A4D2200D85301 /* MovieBox.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		82A09D782C076C8500D85301 /* SearchPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPageView.swift; sourceTree = "<group>"; };
 		82A09D7A2C076C9A00D85301 /* ProfilePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePageView.swift; sourceTree = "<group>"; };
 		82A09D7C2C08DE6600D85301 /* MovieDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDataModel.swift; sourceTree = "<group>"; };
+		82A09D802C0A4D2200D85301 /* MovieBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieBox.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 		82A09D632C07699000D85301 /* Filmy */ = {
 			isa = PBXGroup;
 			children = (
+				82A09D7E2C0A4CFD00D85301 /* CustomStrucutres */,
 				82A09D752C076C1900D85301 /* ViewModel */,
 				82A09D742C076C0F00D85301 /* Helpers */,
 				82A09D732C076BBF00D85301 /* Model */,
@@ -109,6 +112,14 @@
 			children = (
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		82A09D7E2C0A4CFD00D85301 /* CustomStrucutres */ = {
+			isa = PBXGroup;
+			children = (
+				82A09D802C0A4D2200D85301 /* MovieBox.swift */,
+			);
+			path = CustomStrucutres;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,6 +194,7 @@
 			files = (
 				82A09D792C076C8500D85301 /* SearchPageView.swift in Sources */,
 				82A09D672C07699000D85301 /* HomePageView.swift in Sources */,
+				82A09D812C0A4D2200D85301 /* MovieBox.swift in Sources */,
 				82A09D7B2C076C9A00D85301 /* ProfilePageView.swift in Sources */,
 				82A09D772C076C7900D85301 /* LibraryPageView.swift in Sources */,
 				82A09D7D2C08DE6600D85301 /* MovieDataModel.swift in Sources */,
