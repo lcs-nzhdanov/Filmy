@@ -21,7 +21,7 @@ struct MovieBox: View {
                 .overlay {
                     VStack {
                         VStack (spacing: 0) {
-                            Text(movie.name)
+                            Text(movie.title)
                                 .foregroundStyle(.white)
                                 .font(.title)
                                 .padding(.bottom, 10)
@@ -65,11 +65,11 @@ struct MovieBox: View {
                         VStack (spacing: 0) {
                             
                             Group {
-                                Text(movie.year)
+                                Text(movie.title)
                                 
                                 Text("Sci-fi")
                                 
-                                Text(movie.length)
+                                Text("\(movie.duration_m)")
                                 
                                 Text("On netflix")
                             }
