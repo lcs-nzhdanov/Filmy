@@ -67,9 +67,9 @@ struct MovieBox: View {
                             Group {
                                 Text(movie.title)
                                 
-                                Text("Sci-fi")
+                                Text(listToString(list: movie.actorsInvolved))
                                 
-                                Text("\(movie.duration_m)")
+                                Text(minutesToHours(lengthMinutes: movie.duration_m))
                                 
                                 Text("On netflix")
                             }
