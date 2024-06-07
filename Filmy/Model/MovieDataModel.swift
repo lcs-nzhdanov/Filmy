@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 // Convert minutes into "xh xm"
 func minutesToHours(lengthMinutes: Int) -> String {
     let hours: Int = lengthMinutes / 60
@@ -21,6 +20,7 @@ func minutesToHours(lengthMinutes: Int) -> String {
 func listToString(list: [String]) -> String {
     return list.joined(separator: ", ")
 }
+
 
 
 @Observable
@@ -52,4 +52,10 @@ class MovieDetails {
 }
     
     
-    let DunePartTwo = MovieDetails(title: "Dune: Part Two", duration_m: 166, date_released: "2024", budget: 190000000, description: "Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family. Facing a choice between the love of his life and the fate of the universe, he must prevent a terrible future only he can foresee.", platformsToWatch: ["Netflix", "Disney", "PrimeVideo"], actorsInvolved: ["Zendaya", "Timothee Chalet"], status: "Not wathced", isToWatch: false)
+var DunePartTwo = MovieDetails(title: "Dune: Part Two", duration_m: 166, date_released: "2024", budget: 190000000, description: "Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family. Facing a choice between the love of his life and the fate of the universe, he must prevent a terrible future only he can foresee.", platformsToWatch: ["Netflix", "Disney", "PrimeVideo"], actorsInvolved: ["Zendaya", "Timothee Chalet"], status: "Not wathced", isToWatch: false)
+
+var Batman = MovieDetails(title: "Batman", duration_m: 166, date_released: "2024", budget: 190000000, description: "Some description", platformsToWatch: ["Netflix", "Disney", "PrimeVideo"], actorsInvolved: ["Batman", "Timothee Chalet"], status: "Not wathced", isToWatch: false)
+
+
+
+var moviesList: [MovieDetails] = [DunePartTwo, Batman]
