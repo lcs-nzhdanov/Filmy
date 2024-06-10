@@ -20,7 +20,7 @@ struct MovieBox: View {
         ZStack {
             Rectangle()
                 .fill(.black)
-
+            
                 .frame(width: 325, height: 550)
                 .cornerRadius(40)
                 .overlay {
@@ -39,25 +39,27 @@ struct MovieBox: View {
                         .padding(.top, 25)
                         .padding(.bottom, 10)
                         
+
+                        
                         TabView {
                             // Future automatic image adding
-
-//                            ForEach (1 ..< 2) { index in
-//                                Image("duneP\(index)")
-//                                    .resizable()
-//                                    .aspectRatio(contentMode: .fit)
-//                                    .padding(.horizontal, 8)
-                                
-                                Image(.duneP1)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .padding(.horizontal, 8)
-                                
-                                Image(.duneP1)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                    .padding(.horizontal, 8)
-//                            }
+                            
+                            //                            ForEach (1 ..< 2) { index in
+                            //                                Image("duneP\(index)")
+                            //                                    .resizable()
+                            //                                    .aspectRatio(contentMode: .fit)
+                            //                                    .padding(.horizontal, 8)
+                            
+                            Image(.duneP1)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .padding(.horizontal, 8)
+                            
+                            Image(.duneP1)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .padding(.horizontal, 8)
+                            //                            }
                         }
                         .tabViewStyle(.page)
                         .indexViewStyle(.page(backgroundDisplayMode: .always))
@@ -141,7 +143,7 @@ struct MovieBox: View {
         .offset(x: offset.width * 3)
         
         // How much card's opacity changes when dragged
-        .opacity(2 - Double(abs(offset.width / 50)))
+        .opacity(2 - Double(abs(offset.width / 30)))
         
         // Dragging
         .gesture(
@@ -151,6 +153,14 @@ struct MovieBox: View {
                 }
                 .onEnded { _ in
                     if abs(offset.width) >= 100 {
+                        
+                        if offset.width > 0 {
+                            movie.userLiked = true
+                        } else {
+                            movie.userLiked = false
+                        }
+                        
+                        
                         // remove movie
                         removal?()
                     } else {

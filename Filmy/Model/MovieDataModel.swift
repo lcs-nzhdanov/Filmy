@@ -35,10 +35,11 @@ class MovieDetails {
     
     var status: String
     var isToWatch: Bool
+    var userLiked: Bool
     
     
     
-    init(title: String, duration_m: Int, date_released: String, budget: Int, description: String, platformsToWatch: [String], actorsInvolved: [String], status: String, isToWatch: Bool) {
+    init(title: String, duration_m: Int, date_released: String, budget: Int, description: String, platformsToWatch: [String], actorsInvolved: [String], status: String, isToWatch: Bool, userLiked: Bool) {
         self.title = title
         self.duration_m = duration_m
         self.date_released = date_released
@@ -48,15 +49,16 @@ class MovieDetails {
         self.actorsInvolved = actorsInvolved
         self.status = status
         self.isToWatch = isToWatch
+        self.userLiked = userLiked
     }
 }
     
     
-var DunePartTwo = MovieDetails(title: "Dune: Part Two", duration_m: 166, date_released: "2024", budget: 190000000, description: "Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family. Facing a choice between the love of his life and the fate of the universe, he must prevent a terrible future only he can foresee.", platformsToWatch: ["Netflix", "Disney", "PrimeVideo"], actorsInvolved: ["Zendaya", "Timothee Chalet"], status: "Not wathced", isToWatch: false)
+var DunePartTwo = MovieDetails(title: "Dune: Part Two", duration_m: 166, date_released: "2024", budget: 190000000, description: "Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family. Facing a choice between the love of his life and the fate of the universe, he must prevent a terrible future only he can foresee.", platformsToWatch: ["Netflix", "Disney", "PrimeVideo"], actorsInvolved: ["Zendaya", "Timothee Chalet"], status: "Not wathced", isToWatch: false, userLiked: false)
 
-var Batman = MovieDetails(title: "Batman", duration_m: 142, date_released: "2023", budget: 113400000, description: "Some description", platformsToWatch: ["Netflix", "Disney", "PrimeVideo"], actorsInvolved: ["Batman", "Timothee Chalet"], status: "Not wathced", isToWatch: false)
+var Batman = MovieDetails(title: "Batman", duration_m: 142, date_released: "2023", budget: 113400000, description: "Some description", platformsToWatch: ["Netflix", "Disney", "PrimeVideo"], actorsInvolved: ["Batman", "Timothee Chalet"], status: "Not wathced", isToWatch: false, userLiked: false)
 
-var Interstellar = MovieDetails(title: "Interstellar", duration_m: 194, date_released: "2014", budget: 120000000, description: "Some description", platformsToWatch: ["Netflix", "Disney", "PrimeVideo"], actorsInvolved: ["Batman", "Timothee Chalet"], status: "Not wathced", isToWatch: false)
+var Interstellar = MovieDetails(title: "Interstellar", duration_m: 194, date_released: "2014", budget: 120000000, description: "Some description", platformsToWatch: ["Netflix", "Disney", "PrimeVideo"], actorsInvolved: ["Batman", "Timothee Chalet"], status: "Not wathced", isToWatch: false, userLiked: false)
     
     
 

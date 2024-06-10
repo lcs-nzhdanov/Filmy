@@ -39,23 +39,21 @@ struct HomePageView: View {
             }
             
             Spacer()
+
             
-            // What tab are we on?
-            Text("Current tab index: \(currentTab)")
-            
-            Text(userLike ? "Liked" : "Not Liked")
+            Text(Interstellar.userLiked ? "Liked" : "Not Liked")
         }
         // This is triggered whenever the current tab changes
-            .onChange(of: currentTab) { oldValue, newValue in
-                
-                // Figure out what direction the swipe was
-                if oldValue > newValue {
-                    userLike = false
-                } else {
-                    userLike = true
-                }
-                
+        .onChange(of: currentTab) { oldValue, newValue in
+            
+            // Figure out what direction the swipe was
+            if oldValue > newValue {
+                userLike = false
+            } else {
+                userLike = true
             }
+            
+        }
         
         
         
