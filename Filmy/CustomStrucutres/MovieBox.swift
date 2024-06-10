@@ -12,10 +12,15 @@ struct MovieBox: View {
     // Importing movie information
     @Bindable var movie: MovieDetails
     
+    @State private var offset = CGSize.zero
+    
+    var removal: (() -> Void)? = nil
+    
     var body: some View {
         ZStack {
             Rectangle()
                 .fill(.black)
+
                 .frame(width: 325, height: 550)
                 .cornerRadius(40)
                 .overlay {
@@ -129,6 +134,30 @@ struct MovieBox: View {
                     }
                 }
         }
+        //How much card rotates when dragges
+        .rotationEffect(.degrees(offset.width / 5.0))
+        
+        // How much card moves when dragged
+        .offset(x: offset.width * 3)
+        
+        // How much card's opacity changes when dragged
+        .opacity(2 - Double(abs(offset.width / 50)))
+        
+        // Dragging
+        .gesture(
+            DragGesture()
+                .onChanged { gesture in
+                    offset = gesture.translation
+                }
+                .onEnded { _ in
+                    if abs(offset.width) >= 100 {
+                        // remove movie
+                        removal?()
+                    } else {
+                        offset = .zero
+                    }
+                }
+        )
     }
 }
 

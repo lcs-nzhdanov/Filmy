@@ -11,11 +11,10 @@ struct HomePageView: View {
     // MARK: Stored Properties
     
     // Report on the swipe direction, once a swipe occurs
-    @State var swipeDirection: String = ""
+    @State var userLike: Bool = false
     
     // Keep track of what tab we are currently on
     @State var currentTab: Int = 0
-
     
     // MARK: Computed properties
     
@@ -29,40 +28,41 @@ struct HomePageView: View {
             
             Spacer()
             
-            // An ability to swipe movies
-            // The TabView will updated $currentTab with the tag of whatever page is currently selected
-            TabView (selection: $currentTab){
-                
-                // ForEach which goes through array with movies and displays them to swipe
-                ForEach(Array(moviesList.enumerated()), id: \.offset) { index, nextMovie in
-                    MovieBox(movie: nextMovie) // Display the movie
-                        .tag(index) // tag with the integer
+            ZStack {
+                ForEach(0..<moviesList.count, id:\.self) { index in
+                    MovieBox(movie: moviesList[index]) {
+                        withAnimation {
+                            removeMovie(at: index)
+                        }
+                    }
                 }
             }
-            .tabViewStyle(.page)
-            //.indexViewStyle(.page(backgroundDisplayMode: .always))
             
-            
+            Spacer()
             
             // What tab are we on?
             Text("Current tab index: \(currentTab)")
             
-            Text(swipeDirection)
+            Text(userLike ? "Liked" : "Not Liked")
         }
         // This is triggered whenever the current tab changes
             .onChange(of: currentTab) { oldValue, newValue in
                 
                 // Figure out what direction the swipe was
                 if oldValue > newValue {
-                    swipeDirection = "User swiped right."
+                    userLike = false
                 } else {
-                    swipeDirection = "User swiped left."
+                    userLike = true
                 }
                 
             }
         
         
         
+    }
+    
+    func removeMovie(at index: Int) {
+        moviesList.remove(at: index)
     }
 }
 
