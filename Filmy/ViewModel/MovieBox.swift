@@ -14,6 +14,8 @@ struct MovieBox: View {
     
     @State private var offset = CGSize.zero
     
+    @State var showingMoreMenu = false
+    
     var removal: (() -> Void)? = nil
     
     var body: some View {
@@ -41,7 +43,6 @@ struct MovieBox: View {
                         
 
                         
-                        TabView {
                             // Future automatic image adding
                             
                             //                            ForEach (1 ..< 2) { index in
@@ -50,20 +51,13 @@ struct MovieBox: View {
                             //                                    .aspectRatio(contentMode: .fit)
                             //                                    .padding(.horizontal, 8)
                             
-                            Image(.duneP1)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .padding(.horizontal, 8)
                             
                             Image(.duneP1)
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .padding(.horizontal, 8)
                             //                            }
-                        }
-                        .tabViewStyle(.page)
-                        .indexViewStyle(.page(backgroundDisplayMode: .always))
-                        
+
                         Divider()
                             .overlay(.white)
                             .padding(.horizontal, 60)
@@ -94,6 +88,8 @@ struct MovieBox: View {
                             Spacer()
                             
                             Button {
+                                // Toggle to show sheet
+                                showingMoreMenu = true
                                 
                             } label: {
                                 VStack (spacing: 0) {
@@ -135,6 +131,10 @@ struct MovieBox: View {
                         Spacer()
                     }
                 }
+                .sheet(isPresented: $showingMoreMenu) {
+                    Text("Hello world!")
+                        .presentationDetents([.medium])
+                }
         }
         //How much card rotates when dragges
         .rotationEffect(.degrees(offset.width / 5.0))
@@ -151,9 +151,9 @@ struct MovieBox: View {
                 .onChanged { gesture in
                     offset = gesture.translation
                     
-                    if offset.width > 20 {
+                    if offset.width > 0 {
                         movie.userLiked = true
-                    } else if offset.width < -20 {
+                    } else if offset.width < 0 {
                         movie.userLiked = false
                     }
                 }

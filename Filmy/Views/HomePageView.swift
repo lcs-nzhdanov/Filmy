@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomePageView: View {
     // MARK: Stored Properties
-    
+
     
     // MARK: Computed properties
     

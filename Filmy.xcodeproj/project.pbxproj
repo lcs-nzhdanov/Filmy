@@ -61,7 +61,6 @@
 		82A09D632C07699000D85301 /* Filmy */ = {
 			isa = PBXGroup;
 			children = (
-				82A09D7E2C0A4CFD00D85301 /* CustomStrucutres */,
 				82A09D752C076C1900D85301 /* ViewModel */,
 				82A09D742C076C0F00D85301 /* Helpers */,
 				82A09D732C076BBF00D85301 /* Model */,
@@ -110,16 +109,9 @@
 		82A09D752C076C1900D85301 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		82A09D7E2C0A4CFD00D85301 /* CustomStrucutres */ = {
-			isa = PBXGroup;
-			children = (
 				82A09D802C0A4D2200D85301 /* MovieBox.swift */,
 			);
-			path = CustomStrucutres;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
