@@ -132,8 +132,51 @@ struct MovieBox: View {
                     }
                 }
                 .sheet(isPresented: $showingMoreMenu) {
-                    Text("Hello world!")
-                        .presentationDetents([.medium])
+                    VStack {
+                        TabView {
+                            // Future automatic image adding
+                            
+                            //                            ForEach (1 ..< 2) { index in
+                            //                                Image("duneP\(index)")
+                            //                                    .resizable()
+                            //                                    .aspectRatio(contentMode: .fit)
+                            //                                    .padding(.horizontal, 8)
+                            
+                            Image(.duneP1)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .padding(.horizontal, 8)
+                            
+                            Image(.duneP1)
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .padding(.horizontal, 8)
+                            //                            }
+                        }
+                        .tabViewStyle(.page)
+                        .indexViewStyle(.page(backgroundDisplayMode: .always))
+                        
+                        Divider()
+                            .overlay(.white)
+                            .padding(.horizontal, 60)
+                            .padding(.vertical, 5)
+                        
+                        VStack (spacing: 0) {
+                            
+                            Group {
+                                Text(movie.title)
+                                
+                                Text(listToString(list: movie.actorsInvolved))
+                                
+                                Text(minutesToHours(lengthMinutes: movie.duration_m))
+                                
+                                Text("On netflix")
+                            }
+                            .font(.system(size: 20))
+                            .padding(.bottom, 10)
+                            .foregroundStyle(.white)
+                        }
+                    }
                 }
         }
         //How much card rotates when dragges
