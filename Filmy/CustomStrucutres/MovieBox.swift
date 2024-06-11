@@ -150,15 +150,21 @@ struct MovieBox: View {
             DragGesture()
                 .onChanged { gesture in
                     offset = gesture.translation
+                    
+                    if offset.width > 20 {
+                        movie.userLiked = true
+                    } else if offset.width < -20 {
+                        movie.userLiked = false
+                    }
                 }
                 .onEnded { _ in
-                    if abs(offset.width) >= 100 {
+                    if abs(offset.width) >= 75 {
                         
-                        if offset.width > 0 {
-                            movie.userLiked = true
-                        } else {
-                            movie.userLiked = false
-                        }
+//                        if offset.width > 0 {
+//                            movie.userLiked = true
+//                        } else {
+//                            movie.userLiked = false
+//                        }
                         
                         
                         // remove movie

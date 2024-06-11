@@ -10,11 +10,6 @@ import SwiftUI
 struct HomePageView: View {
     // MARK: Stored Properties
     
-    // Report on the swipe direction, once a swipe occurs
-    @State var userLike: Bool = false
-    
-    // Keep track of what tab we are currently on
-    @State var currentTab: Int = 0
     
     // MARK: Computed properties
     
@@ -39,24 +34,12 @@ struct HomePageView: View {
             }
             
             Spacer()
-
             
-            Text(Interstellar.userLiked ? "Liked" : "Not Liked")
+            
+            Text("Interstellar: \(Interstellar.userLiked ? "Liked" : "Not Liked")")
+            Text("Batman: \(Batman.userLiked ? "Liked" : "Not Liked")")
+            Text("Dune: \(DunePartTwo.userLiked ? "Liked" : "Not Liked")")
         }
-        // This is triggered whenever the current tab changes
-        .onChange(of: currentTab) { oldValue, newValue in
-            
-            // Figure out what direction the swipe was
-            if oldValue > newValue {
-                userLike = false
-            } else {
-                userLike = true
-            }
-            
-        }
-        
-        
-        
     }
     
     func removeMovie(at index: Int) {
