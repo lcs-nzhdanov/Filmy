@@ -88,7 +88,7 @@ struct MovieBox: View {
                         HStack {
                             Spacer()
                             
-                            NavigationLink(destination: MovieDetailsView(movie: DunePartTwo)) {
+                            NavigationLink(destination: MovieDetailsView(movie: movie)) {
                                 VStack(spacing: 0) {
                                     Image(systemName: "ellipsis.circle")
                                         .font(.system(size: 44))

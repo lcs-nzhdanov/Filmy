@@ -14,43 +14,45 @@ struct HomePageView: View {
     // MARK: Computed properties
     
     var body: some View {
-        ZStack {
-            
-            // Gradient Background
+        NavigationStack {
+            ZStack {
+                
+                // Gradient Background
                 LinearGradient(
                     gradient: Gradient(colors: [.gradientBrown, .gradientDarkPurple]), // Replace with your desired colors
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing
                 )
                 .ignoresSafeArea()
-            
-            VStack {
-                Text("For you")
-                Divider()
-                    .overlay(.white)
-                    .padding(.horizontal, 150)
                 
-                Spacer()
-                
-                
-                ZStack {
-                    ForEach(0..<moviesList.count, id:\.self) { index in
-                        MovieBox(movie: moviesList[index]) {
-                            withAnimation {
-                                removeMovie(at: index)
+                VStack {
+                    Text("For you")
+                    Divider()
+                        .overlay(.white)
+                        .padding(.horizontal, 150)
+                    
+                    Spacer()
+                    
+                    
+                    ZStack {
+                        ForEach(0..<moviesList.count, id:\.self) { index in
+                            MovieBox(movie: moviesList[index]) {
+                                withAnimation {
+                                    removeMovie(at: index)
+                                }
                             }
                         }
                     }
+                    
+                    Spacer()
+                    
+                    
+                    Text("Interstellar: \(Interstellar.userLiked ? "Liked" : "Not Liked")")
+                    Text("Batman: \(Batman.userLiked ? "Liked" : "Not Liked")")
+                    Text("Dune: \(DunePartTwo.userLiked ? "Liked" : "Not Liked")")
+                    
+                    Spacer()
                 }
-                
-                Spacer()
-                
-                
-                Text("Interstellar: \(Interstellar.userLiked ? "Liked" : "Not Liked")")
-                Text("Batman: \(Batman.userLiked ? "Liked" : "Not Liked")")
-                Text("Dune: \(DunePartTwo.userLiked ? "Liked" : "Not Liked")")
-                
-                Spacer()
             }
         }
     }
