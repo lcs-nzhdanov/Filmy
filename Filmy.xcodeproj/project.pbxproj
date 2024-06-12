@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8249CE2C2C194B8C0045801F /* MovieDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8249CE2B2C194B8C0045801F /* MovieDetailsView.swift */; };
 		82A09D652C07699000D85301 /* FilmyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A09D642C07699000D85301 /* FilmyApp.swift */; };
 		82A09D672C07699000D85301 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82A09D662C07699000D85301 /* HomePageView.swift */; };
 		82A09D692C07699200D85301 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82A09D682C07699200D85301 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8249CE2B2C194B8C0045801F /* MovieDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsView.swift; sourceTree = "<group>"; };
 		82A09D612C07699000D85301 /* Filmy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Filmy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82A09D642C07699000D85301 /* FilmyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmyApp.swift; sourceTree = "<group>"; };
 		82A09D662C07699000D85301 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				82A09D762C076C7900D85301 /* LibraryPageView.swift */,
 				82A09D782C076C8500D85301 /* SearchPageView.swift */,
 				82A09D7A2C076C9A00D85301 /* ProfilePageView.swift */,
+				8249CE2B2C194B8C0045801F /* MovieDetailsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -186,6 +189,7 @@
 			files = (
 				82A09D792C076C8500D85301 /* SearchPageView.swift in Sources */,
 				82A09D672C07699000D85301 /* HomePageView.swift in Sources */,
+				8249CE2C2C194B8C0045801F /* MovieDetailsView.swift in Sources */,
 				82A09D812C0A4D2200D85301 /* MovieBox.swift in Sources */,
 				82A09D7B2C076C9A00D85301 /* ProfilePageView.swift in Sources */,
 				82A09D772C076C7900D85301 /* LibraryPageView.swift in Sources */,

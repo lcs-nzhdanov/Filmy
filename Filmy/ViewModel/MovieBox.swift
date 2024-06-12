@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MovieBox: View {
+    // MARK: Stored Properties
     
     // Importing movie information
     @Bindable var movie: MovieDetails
@@ -41,23 +42,23 @@ struct MovieBox: View {
                         .padding(.top, 25)
                         .padding(.bottom, 10)
                         
-
                         
-                            // Future automatic image adding
-                            
-                            //                            ForEach (1 ..< 2) { index in
-                            //                                Image("duneP\(index)")
-                            //                                    .resizable()
-                            //                                    .aspectRatio(contentMode: .fit)
-                            //                                    .padding(.horizontal, 8)
-                            
-                            
-                            Image(.duneP1)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .padding(.horizontal, 8)
-                            //                            }
-
+                        
+                        // Future automatic image adding
+                        
+                        //                            ForEach (1 ..< 2) { index in
+                        //                                Image("duneP\(index)")
+                        //                                    .resizable()
+                        //                                    .aspectRatio(contentMode: .fit)
+                        //                                    .padding(.horizontal, 8)
+                        
+                        
+                        Image(.duneP1)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .padding(.horizontal, 8)
+                        //                            }
+                        
                         Divider()
                             .overlay(.white)
                             .padding(.horizontal, 60)
@@ -87,17 +88,12 @@ struct MovieBox: View {
                         HStack {
                             Spacer()
                             
-                            Button {
-                                // Toggle to show sheet
-                                showingMoreMenu = true
-                                
-                            } label: {
-                                VStack (spacing: 0) {
+                            NavigationLink(destination: MovieDetailsView(movie: DunePartTwo)) {
+                                VStack(spacing: 0) {
                                     Image(systemName: "ellipsis.circle")
                                         .font(.system(size: 44))
                                         .padding(.bottom, 3)
                                         .bold()
-                                    
                                     Text("More")
                                         .font(.system(size: 18))
                                         .bold()
@@ -131,53 +127,7 @@ struct MovieBox: View {
                         Spacer()
                     }
                 }
-                .sheet(isPresented: $showingMoreMenu) {
-                    VStack {
-                        TabView {
-                            // Future automatic image adding
-                            
-                            //                            ForEach (1 ..< 2) { index in
-                            //                                Image("duneP\(index)")
-                            //                                    .resizable()
-                            //                                    .aspectRatio(contentMode: .fit)
-                            //                                    .padding(.horizontal, 8)
-                            
-                            Image(.duneP1)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .padding(.horizontal, 8)
-                            
-                            Image(.duneP1)
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
-                                .padding(.horizontal, 8)
-                            //                            }
-                        }
-                        .tabViewStyle(.page)
-                        .indexViewStyle(.page(backgroundDisplayMode: .always))
-                        
-                        Divider()
-                            .overlay(.white)
-                            .padding(.horizontal, 60)
-                            .padding(.vertical, 5)
-                        
-                        VStack (spacing: 0) {
-                            
-                            Group {
-                                Text(movie.title)
-                                
-                                Text(listToString(list: movie.actorsInvolved))
-                                
-                                Text(minutesToHours(lengthMinutes: movie.duration_m))
-                                
-                                Text("On netflix")
-                            }
-                            .font(.system(size: 20))
-                            .padding(.bottom, 10)
-                            .foregroundStyle(.white)
-                        }
-                    }
-                }
+            
         }
         //How much card rotates when dragges
         .rotationEffect(.degrees(offset.width / 5.0))
@@ -203,11 +153,11 @@ struct MovieBox: View {
                 .onEnded { _ in
                     if abs(offset.width) >= 75 {
                         
-//                        if offset.width > 0 {
-//                            movie.userLiked = true
-//                        } else {
-//                            movie.userLiked = false
-//                        }
+                        //                        if offset.width > 0 {
+                        //                            movie.userLiked = true
+                        //                        } else {
+                        //                            movie.userLiked = false
+                        //                        }
                         
                         
                         // remove movie

@@ -14,8 +14,7 @@ struct LibraryPageView: View {
                 List {
                     NavigationLink(
                         destination: {
-                            MovieBox(movie: DunePartTwo)
-                                .preferredColorScheme(.dark)
+                            MovieDetailsView(movie: DunePartTwo)
                     },
                         label: { Text("\(DunePartTwo.title)")
                     })

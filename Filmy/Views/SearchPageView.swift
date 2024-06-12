@@ -13,6 +13,7 @@ struct SearchPageView: View {
             Text("Type a movie name")
                 .font(.title2)
                 .opacity(0.3)
+            
         }
         .searchable(text: Binding.constant(""))
     }
