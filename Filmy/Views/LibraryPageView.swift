@@ -9,7 +9,21 @@ import SwiftUI
 
 struct LibraryPageView: View {
     var body: some View {
-        Text("Library")
+        NavigationStack {
+            VStack {
+                List {
+                    NavigationLink(
+                        destination: {
+                            MovieBox(movie: DunePartTwo)
+                                .preferredColorScheme(.dark)
+                    },
+                        label: { Text("\(DunePartTwo.title)")
+                    })
+                }
+                .listStyle(.plain)
+                .searchable(text: Binding.constant(""))
+            }
+        }
     }
 }
 

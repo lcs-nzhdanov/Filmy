@@ -9,7 +9,12 @@ import SwiftUI
 
 struct SearchPageView: View {
     var body: some View {
-        Text("Search")
+        NavigationStack {
+            Text("Type a movie name")
+                .font(.title2)
+                .opacity(0.3)
+        }
+        .searchable(text: Binding.constant(""))
     }
 }
 

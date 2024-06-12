@@ -32,6 +32,7 @@ struct HomePageView: View {
                 
                 Spacer()
                 
+                
                 ZStack {
                     ForEach(0..<moviesList.count, id:\.self) { index in
                         MovieBox(movie: moviesList[index]) {
@@ -53,6 +54,7 @@ struct HomePageView: View {
             }
         }
     }
+    
     
     func removeMovie(at index: Int) {
         moviesList.remove(at: index)
