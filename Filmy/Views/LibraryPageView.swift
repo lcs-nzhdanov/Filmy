@@ -27,5 +27,5 @@ struct LibraryPageView: View {
 }
 
 #Preview {
-    LibraryPageView()
+    LandingView(selectedTab: Binding.constant(2))
 }

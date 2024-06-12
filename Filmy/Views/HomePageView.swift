@@ -9,8 +9,9 @@ import SwiftUI
 
 struct HomePageView: View {
     // MARK: Stored Properties
+    @State private var didNotLike: [MovieDetails] = []
+    @State private var didLike: [MovieDetails] = []
 
-    
     // MARK: Computed properties
     
     var body: some View {
@@ -33,7 +34,7 @@ struct HomePageView: View {
                     
                     Spacer()
                     
-                    
+                    // Creation of recommended movies
                     ZStack {
                         ForEach(0..<moviesList.count, id:\.self) { index in
                             MovieBox(movie: moviesList[index]) {
@@ -57,78 +58,13 @@ struct HomePageView: View {
         }
     }
     
-    
+    // Removes a movie from the array
     func removeMovie(at index: Int) {
+        didLike.append(moviesList[index])
         moviesList.remove(at: index)
     }
 }
 
 #Preview {
-    
-        
-        TabView() {
-            
-            HomePageView()
-                .preferredColorScheme(.dark)
-                .tabItem {
-                    Image(
-                        systemName: "house.fill"
-                    )
-                    Text(
-                        "Home"
-                    )
-                }
-                .tag(
-                    1
-                )
-            
-            LibraryPageView()
-                .preferredColorScheme(.dark)
-                .tabItem {
-                    Image(
-                        systemName: "star.fill"
-                    )
-                    Text(
-                        "Library"
-                    )
-                }
-                .tag(
-                    2
-                )
-            
-            SearchPageView()
-                .preferredColorScheme(.dark)
-                .tabItem {
-                    Image(
-                        systemName: "magnifyingglass"
-                    )
-                    Text(
-                        "Search"
-                    )
-                }
-                .tag(
-                    3
-                )
-            
-            ProfilePageView()
-                .preferredColorScheme(.dark)
-                .tabItem {
-                    Image(
-                        systemName: "person.fill"
-                    )
-                    Text(
-                        "Profile"
-                    )
-                }
-                .tag(
-                    4
-                )
-        }
-        .accentColor(
-            .blue
-    )
-        .onAppear {
-                UITabBar.appearance().backgroundColor = UIColor.black
-                UITabBar.appearance().unselectedItemTintColor = UIColor.gray
-            }
+    LandingView(selectedTab: Binding.constant(1))
 }

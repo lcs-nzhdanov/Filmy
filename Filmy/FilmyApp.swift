@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct FilmyApp: App {
+    
+    @State private var selectedTab = 1
+    
     var body: some Scene {
         WindowGroup {
-            HomePageView()
+            LandingView(selectedTab: $selectedTab)
         }
     }
 }
