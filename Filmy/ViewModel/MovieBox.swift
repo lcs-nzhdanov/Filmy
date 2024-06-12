@@ -17,6 +17,7 @@ struct MovieBox: View {
     
     @State var showingMoreMenu = false
     
+    // MARK: Clarify Meaning
     var removal: (() -> Void)? = nil
     
     var body: some View {
@@ -43,29 +44,18 @@ struct MovieBox: View {
                         .padding(.bottom, 10)
                         
                         
-                        
-                        // Future automatic image adding
-                        
-                        //                            ForEach (1 ..< 2) { index in
-                        //                                Image("duneP\(index)")
-                        //                                    .resizable()
-                        //                                    .aspectRatio(contentMode: .fit)
-                        //                                    .padding(.horizontal, 8)
-                        
-                        
                         Image(.duneP1)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
                             .padding(.horizontal, 8)
-                        //                            }
                         
                         Divider()
                             .overlay(.white)
                             .padding(.horizontal, 60)
                             .padding(.vertical, 5)
                         
+                        
                         VStack (spacing: 0) {
-                            
                             Group {
                                 Text(movie.title)
                                 
@@ -104,22 +94,20 @@ struct MovieBox: View {
                             Spacer()
                             
                             Button {
-                                movie.isToWatch.toggle()
-                                
-                                
+                                movie.isInLibrary.toggle()
                             } label: {
                                 VStack (spacing: 0) {
-                                    Image(systemName: movie.isToWatch ? "seal.fill" : "seal")
+                                    Image(systemName: movie.isInLibrary ? "seal.fill" : "seal")
                                         .font(.system(size: 44))
                                         .padding(.bottom, 3)
                                         .bold()
-                                    Text(movie.isToWatch ? "In Library" : "To Watch")
+                                    Text(movie.isInLibrary ? "In Library" : "To Watch")
                                         .font(.system(size: 18))
                                         .bold()
                                 }
                             }
                             .padding(.horizontal, 20)
-                            .foregroundStyle(movie.isToWatch ? .yellow : .white)
+                            .foregroundStyle(movie.isInLibrary ? .yellow : .white)
                             
                             Spacer()
                         }
@@ -153,14 +141,8 @@ struct MovieBox: View {
                 .onEnded { _ in
                     if abs(offset.width) >= 75 {
                         
-                        //                        if offset.width > 0 {
-                        //                            movie.userLiked = true
-                        //                        } else {
-                        //                            movie.userLiked = false
-                        //                        }
-                        
-                        
                         // remove movie
+                        // MARK: Clarify meaning
                         removal?()
                     } else {
                         offset = .zero

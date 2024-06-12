@@ -24,7 +24,9 @@ struct MovieDetailsView: View {
                         .bold()
                     
                     Divider()
+                        .overlay(.white)
                         .padding(.horizontal, 60)
+                        .padding(.vertical, 5)
                 }
                 .padding(.top, 25)
                 .padding(.bottom, 10)
@@ -53,10 +55,18 @@ struct MovieDetailsView: View {
                 .indexViewStyle(.page(backgroundDisplayMode: .always))
                 .frame(minHeight: 300)
                 
+                
+                Divider()
+                    .overlay(.white)
+                    .padding(.horizontal, 60)
+                    .padding(.vertical, 10)
+                
+                
                 VStack(spacing: 0) {
                     
                     HStack {
                         Text("Status: ")
+                            .bold()
                         
                         Menu {
                             ForEach(statuses, id: \.self) { status in
@@ -65,7 +75,7 @@ struct MovieDetailsView: View {
                                 }) {
                                     HStack {
                                         Text(status)
-                                            
+                                        
                                         Spacer()
                                     }
                                     .frame(maxWidth: .infinity)
@@ -78,52 +88,87 @@ struct MovieDetailsView: View {
                                     .foregroundColor(colorForStatus(status: movie.status))
                                 
                                 // Need to create a border with a fixed size
-
+                                
                             }
                             .padding()
                             .cornerRadius(8)
                             .padding(.trailing, 70)
-                            .padding(.vertical, 10)
-                    }
+                        }
+                        
+                        Spacer()
                     }
                     .font(.system(size: 20))
                     .padding(.bottom, 10)
+                    .padding(.horizontal, 20)
                     
                     
                     Divider()
                         .overlay(.white)
                         .padding(.horizontal, 60)
-                        .padding(.vertical, 5)
+                        .padding(.vertical, 10)
+                    
                     
                     VStack (spacing: 0) {
                         
                         Group {
-                            Text(movie.status)
+                            HStack {
+                                Text("Date Released:")
+                                    .bold()
+                                Text(movie.date_released)
+                                Spacer()
+                            }
                             
-                            Text(listToString(list: movie.actorsInvolved))
+                            HStack {
+                                Text("Duration:")
+                                    .bold()
+                                Text(minutesToHours(lengthMinutes: movie.duration_m))
+                                Spacer()
+                            }
                             
-                            Text(minutesToHours(lengthMinutes: movie.duration_m))
+                            HStack {
+                                Text("Genres:")
+                                    .bold()
+                                Text(listToString(list: movie.genres))
+                                Spacer()
+                            }
                             
-                            Text(listToString(list: movie.platformsToWatch))
+                            HStack {
+                                Text("Actors:")
+                                    .bold()
+                                Text(listToString(list: movie.actorsInvolved))
+                                Spacer()
+                            }
                             
-                            Text(movie.title)
-                            
-                            Text(listToString(list: movie.actorsInvolved))
-                            
-                            Text(minutesToHours(lengthMinutes: movie.duration_m))
-                            
-                            Text(listToString(list: movie.platformsToWatch))
-                            
-                            Text(movie.title)
-                            
-                            Text(listToString(list: movie.actorsInvolved))
-                            
-                            Text(minutesToHours(lengthMinutes: movie.duration_m))
-                            
-                            Text(listToString(list: movie.platformsToWatch))
+                            HStack {
+                                Text("IMBD:")
+                                    .bold()
+                                
+                                // Format to 1 decimal place
+                                Text("\(String(format: "%.1f", movie.imbdRating))")
+                                Spacer()
+                            }
                         }
                         .font(.system(size: 20))
                         .padding(.bottom, 10)
+                        .padding(.horizontal, 20)
+                        
+                        
+                        Divider()
+                            .overlay(.white)
+                            .padding(.horizontal, 60)
+                            .padding(.vertical, 10)
+                        
+                        
+                        VStack {
+                            Text("Description")
+                                .font(.system(size: 20))
+                                .padding(.bottom, 10)
+                                .bold()
+                            
+                            Text(movie.description)
+                                .padding(.horizontal, 24)
+                                .font(.system(size: 20))
+                        }
                     }
                     
                     Spacer()
@@ -145,7 +190,7 @@ struct MovieDetailsView: View {
         case "Favourite":
             return .pink
         default:
-            return .black
+            return .gray
         }
     }
 }

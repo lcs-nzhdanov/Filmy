@@ -19,7 +19,7 @@ struct HomePageView: View {
                 
                 // Gradient Background
                 LinearGradient(
-                    gradient: Gradient(colors: [.gradientBrown, .gradientDarkPurple]), // Replace with your desired colors
+                    gradient: Gradient(colors: [.gradientBrown, .gradientDarkPurple]),
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing
                 )
