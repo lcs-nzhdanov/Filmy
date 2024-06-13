@@ -7,17 +7,29 @@
 
 import SwiftUI
 
+
+
 struct LibraryPageView: View {
+    
     var body: some View {
+        
+//        ForEach(0..<moviesList.count, id:\.self) { index in
+//            if moviesList[index].isInLibrary {
+//                libraryList.append(moviesList[index])
+//            }
+//        }
+        
         NavigationStack {
             VStack {
                 List {
-                    NavigationLink(
-                        destination: {
-                            MovieDetailsView(movie: DunePartTwo)
-                    },
-                        label: { Text("\(DunePartTwo.title)")
-                    })
+                    ForEach(0..<libraryList.count, id:\.self) { index in
+                        NavigationLink(
+                            destination: {
+                                MovieDetailsView(movie: libraryList[index])
+                            },
+                            label: { Text("\(libraryList[index].title)")
+                            })
+                    }
                 }
                 .listStyle(.plain)
                 .searchable(text: Binding.constant(""))

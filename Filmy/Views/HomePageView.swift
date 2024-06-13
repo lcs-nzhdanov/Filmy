@@ -9,8 +9,7 @@ import SwiftUI
 
 struct HomePageView: View {
     // MARK: Stored Properties
-    @State private var didNotLike: [MovieDetails] = []
-    @State private var didLike: [MovieDetails] = []
+
 
     // MARK: Computed properties
     
@@ -48,10 +47,6 @@ struct HomePageView: View {
                     Spacer()
                     
                     
-                    Text("Interstellar: \(Interstellar.userLiked ? "Liked" : "Not Liked")")
-                    Text("Batman: \(Batman.userLiked ? "Liked" : "Not Liked")")
-                    Text("Dune: \(DunePartTwo.userLiked ? "Liked" : "Not Liked")")
-                    
                     Spacer()
                 }
             }
@@ -60,7 +55,6 @@ struct HomePageView: View {
     
     // Removes a movie from the array
     func removeMovie(at index: Int) {
-        didLike.append(moviesList[index])
         moviesList.remove(at: index)
     }
 }

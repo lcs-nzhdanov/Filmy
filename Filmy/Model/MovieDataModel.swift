@@ -7,21 +7,6 @@
 
 import Foundation
 
-// Convert minutes into "xh xm"
-func minutesToHours(lengthMinutes: Int) -> String {
-    let hours: Int = lengthMinutes / 60
-    let minutes: Int = lengthMinutes % 60
-    
-    return (minutes == 0 ? "\(hours)h": "\(hours)h \(minutes)m")
-}
-
-
-// Convert list into String with commas in between
-func listToString(list: [String]) -> String {
-    return list.joined(separator: ", ")
-}
-
-
 
 @Observable
 class MovieDetails {
@@ -67,3 +52,5 @@ var Interstellar = MovieDetails(title: "Interstellar", duration_m: 194, date_rel
     
 
 var moviesList: [MovieDetails] = [DunePartTwo, Batman, Interstellar, DunePartTwo, Batman, Interstellar, DunePartTwo, Batman, Interstellar]
+
+var libraryList: [MovieDetails] = []
