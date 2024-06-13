@@ -9,7 +9,13 @@ import SwiftUI
 
 struct HomePageView: View {
     // MARK: Stored Properties
-
+    
+    @Binding var moviesList: [MovieDetails]
+    
+    @Binding var libraryList: [MovieDetails]
+    
+    @Binding var didLike: [MovieDetails]
+    @Binding var didNotLike: [MovieDetails]
 
     // MARK: Computed properties
     
@@ -33,10 +39,20 @@ struct HomePageView: View {
                     
                     Spacer()
                     
-                    // Creation of recommended movies
+                    // Creation of recomended movies
                     ZStack {
-                        ForEach(0..<moviesList.count, id:\.self) { index in
-                            MovieBox(movie: moviesList[index], libraryList: Binding.constant([]), didLike: Binding.constant([]), didNotLike: Binding.constant([])) {
+                        
+//                        let _ = print(moviesList.count)
+
+                        ForEach(Array($moviesList.enumerated()), id:\.offset) { index, $movie in
+                            MovieBox(
+                                movie: $movie,
+                                moviesList: $moviesList,
+                                libraryList: $libraryList,
+                                didLike: $didLike,
+                                didNotLike: $didNotLike
+                            ) {
+                                // I clear the array here, it will be empty
                                 withAnimation {
                                     removeMovie(at: index)
                                 }
@@ -45,7 +61,7 @@ struct HomePageView: View {
                     }
                     
                     Spacer()
-                    
+                
                     
                     Spacer()
                 }
@@ -60,5 +76,11 @@ struct HomePageView: View {
 }
 
 #Preview {
-    LandingView(selectedTab: Binding.constant(1))
+    LandingView(
+        selectedTab: Binding.constant(1),
+        moviesList:  Binding.constant([]),
+        libraryList:  Binding.constant([]),
+        didLike:  Binding.constant([]),
+        didNotLike:  Binding.constant([])
+    )
 }

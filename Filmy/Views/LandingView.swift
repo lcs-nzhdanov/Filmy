@@ -11,10 +11,22 @@ struct LandingView: View {
     
     @Binding var selectedTab: Int
     
+    @Binding var moviesList: [MovieDetails]
+    
+    @Binding var libraryList: [MovieDetails]
+    
+    @Binding var didLike: [MovieDetails]
+    @Binding var didNotLike: [MovieDetails]
+    
     var body: some View {
         TabView(selection: $selectedTab) {
             
-            HomePageView()
+            HomePageView(
+                moviesList: $moviesList,
+                libraryList: $libraryList,
+                didLike: $didLike,
+                didNotLike: $didNotLike
+            )
                 .preferredColorScheme(.dark)
                 .tabItem {
                     Image(
@@ -83,5 +95,11 @@ struct LandingView: View {
 }
 
 #Preview {
-    LandingView(selectedTab: Binding.constant(1))
+    LandingView(
+        selectedTab:  Binding.constant(1),
+        moviesList:  Binding.constant([]),
+        libraryList:  Binding.constant([]),
+        didLike:  Binding.constant([]),
+        didNotLike:  Binding.constant([])
+    )
 }

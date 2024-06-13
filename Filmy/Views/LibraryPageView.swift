@@ -41,5 +41,11 @@ struct LibraryPageView: View {
 }
 
 #Preview {
-    LandingView(selectedTab: Binding.constant(2))
+    LandingView(
+        selectedTab:  Binding.constant(2),
+        moviesList:  Binding.constant([]),
+        libraryList:  Binding.constant([]),
+        didLike:  Binding.constant([]),
+        didNotLike:  Binding.constant([])
+    )
 }

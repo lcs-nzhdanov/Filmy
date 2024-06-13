@@ -89,6 +89,7 @@
 		82A09D722C076BB900D85301 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				82A09D802C0A4D2200D85301 /* MovieBox.swift */,
 				82A09D662C07699000D85301 /* HomePageView.swift */,
 				82A09D762C076C7900D85301 /* LibraryPageView.swift */,
 				82A09D782C076C8500D85301 /* SearchPageView.swift */,
@@ -118,7 +119,6 @@
 		82A09D752C076C1900D85301 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				82A09D802C0A4D2200D85301 /* MovieBox.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";

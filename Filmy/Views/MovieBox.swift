@@ -1,30 +1,23 @@
-//
-//  MovieBox.swift
-//  Filmy
-//
-//  Created by Nikita Zhdanov on 2024-05-31.
-//
-
 import SwiftUI
 
 struct MovieBox: View {
     // MARK: Stored Properties
     
     // Importing movie information
-    @Bindable var movie: MovieDetails
+    @Binding var movie: MovieDetails
     
     @State private var offset = CGSize.zero
 
+    
+    @Binding var moviesList: [MovieDetails]
+    
     @Binding var libraryList: [MovieDetails]
     
     @Binding var didLike: [MovieDetails]
-    
     @Binding var didNotLike: [MovieDetails]
     
     // MARK: Clarify Meaning
     var removal: (() -> Void)? = nil
-    
-    
     
     // MARK: Computed properties
     
@@ -32,36 +25,34 @@ struct MovieBox: View {
         NavigationStack {
             ZStack {
                 Rectangle()
-                    .fill(.black)
+                    .fill(Color.black)
                     .frame(width: 325, height: 550)
                     .cornerRadius(40)
                     .overlay {
                         VStack {
                             VStack (spacing: 0) {
                                 Text(movie.title)
-                                    .foregroundStyle(.white)
+                                    .foregroundColor(.white)
                                     .font(.title)
                                     .padding(.bottom, 10)
                                     .bold()
                                 
                                 Divider()
-                                    .overlay(.white)
+                                    .overlay(Color.white)
                                     .padding(.horizontal, 60)
                             }
                             .padding(.top, 25)
                             .padding(.bottom, 10)
                             
-                            
-                            Image(.duneP1)
+                            Image("duneP1") // Use the image name directly
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .padding(.horizontal, 8)
                             
                             Divider()
-                                .overlay(.white)
+                                .overlay(Color.white)
                                 .padding(.horizontal, 60)
                                 .padding(.vertical, 5)
-                            
                             
                             VStack (spacing: 0) {
                                 Group {
@@ -71,14 +62,18 @@ struct MovieBox: View {
                                     
                                     Text(minutesToHours(lengthMinutes: movie.duration_m))
                                     
-                                    Text("On netflix")
+                                    Text("On Netflix")
+                                    
+                                    if didLike.count > 0 {
+                                        Text("hi\(didLike[0].title)")
+                                    }
                                 }
                                 .font(.system(size: 20))
                                 .padding(.bottom, 10)
-                                .foregroundStyle(.white)
+                                .foregroundColor(.white)
                                 
                                 Divider()
-                                    .overlay(.white)
+                                    .overlay(Color.white)
                                     .padding(.horizontal, 60)
                                     .padding(.vertical, 5)
                             }
@@ -103,7 +98,18 @@ struct MovieBox: View {
                                 
                                 Button {
                                     movie.isInLibrary.toggle()
-
+                                    dump(movie.isInLibrary)
+                                    
+                                    if movie.isInLibrary {
+                                        libraryList.append(movie)
+                                    } else {
+                                        libraryList.removeAll { currentMovie in
+                                            currentMovie.id == movie.id
+                                        }
+                                    }
+                                    
+                                    dump(libraryList.count)
+                                    
                                 } label: {
                                     VStack (spacing: 0) {
                                         Image(systemName: movie.isInLibrary ? "seal.fill" : "seal")
@@ -116,7 +122,7 @@ struct MovieBox: View {
                                     }
                                 }
                                 .padding(.horizontal, 20)
-                                .foregroundStyle(movie.isInLibrary ? .yellow : .white)
+                                .foregroundColor(movie.isInLibrary ? .yellow : .white)
                                 
                                 Spacer()
                             }
@@ -126,7 +132,7 @@ struct MovieBox: View {
                     }
                 
             }
-            //How much card rotates when dragges
+            // How much card rotates when dragged
             .rotationEffect(.degrees(offset.width / 5.0))
             
             // How much card moves when dragged
@@ -154,6 +160,7 @@ struct MovieBox: View {
                                 }) {
                                     didLike.append(movie)
                                 }
+                                movie.userLiked = true
                                 
                             } else if offset.width < 0 {
                                 
@@ -163,11 +170,11 @@ struct MovieBox: View {
                                 }) {
                                     didNotLike.append(movie)
                                 }
+                                
+                                movie.userLiked = false
                             }
                             
-                            
                             // remove movie
-                            // MARK: Clarify meaning
                             removal?()
                         } else {
                             offset = .zero
@@ -179,5 +186,13 @@ struct MovieBox: View {
 }
 
 #Preview {
-    MovieBox(movie: DunePartTwo, libraryList: .constant([]), didLike: Binding.constant([]), didNotLike: Binding.constant([]))
+    MovieBox(
+        movie: Binding.constant(DunePartTwo),
+        moviesList:  Binding.constant([]),
+        libraryList:  Binding.constant([]),
+        didLike:  Binding.constant([]),
+        didNotLike:  Binding.constant([])
+    )
 }
+// I just clear the array here, no wonder it will be empty
+// How do I bind corretly, so the data actually transfers??

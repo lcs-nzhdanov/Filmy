@@ -20,5 +20,11 @@ struct SearchPageView: View {
 }
 
 #Preview {
-    SearchPageView()
+    LandingView(
+        selectedTab:  Binding.constant(3),
+        moviesList:  Binding.constant([]),
+        libraryList:  Binding.constant([]),
+        didLike:  Binding.constant([]),
+        didNotLike:  Binding.constant([])
+    )
 }
