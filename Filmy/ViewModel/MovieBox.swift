@@ -14,11 +14,12 @@ struct MovieBox: View {
     @Bindable var movie: MovieDetails
     
     @State private var offset = CGSize.zero
-    
-    @State private var didLike: [MovieDetails] = []
-    
-    @State private var didNotLike: [MovieDetails] = []
 
+    @Binding var libraryList: [MovieDetails]
+    
+    @Binding var didLike: [MovieDetails]
+    
+    @Binding var didNotLike: [MovieDetails]
     
     // MARK: Clarify Meaning
     var removal: (() -> Void)? = nil
@@ -102,6 +103,7 @@ struct MovieBox: View {
                                 
                                 Button {
                                     movie.isInLibrary.toggle()
+
                                 } label: {
                                     VStack (spacing: 0) {
                                         Image(systemName: movie.isInLibrary ? "seal.fill" : "seal")
@@ -147,14 +149,18 @@ struct MovieBox: View {
                             if offset.width > 0 {
                                 
                                 // Add to the didLike array
-                                if !didLike.contains(where: { $0.id == movie.id }) {
+                                if !didLike.contains(where: { currentMovie in
+                                    currentMovie.id == movie.id
+                                }) {
                                     didLike.append(movie)
                                 }
                                 
                             } else if offset.width < 0 {
                                 
                                 // Add to the didNotLike array
-                                if !didNotLike.contains(where: { $0.id == movie.id }) {
+                                if !didNotLike.contains(where: { currentMovie in
+                                    currentMovie.id == movie.id
+                                }) {
                                     didNotLike.append(movie)
                                 }
                             }
@@ -173,5 +179,5 @@ struct MovieBox: View {
 }
 
 #Preview {
-    MovieBox(movie: DunePartTwo)
+    MovieBox(movie: DunePartTwo, libraryList: .constant([]), didLike: Binding.constant([]), didNotLike: Binding.constant([]))
 }

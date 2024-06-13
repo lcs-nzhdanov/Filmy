@@ -36,7 +36,7 @@ struct HomePageView: View {
                     // Creation of recommended movies
                     ZStack {
                         ForEach(0..<moviesList.count, id:\.self) { index in
-                            MovieBox(movie: moviesList[index]) {
+                            MovieBox(movie: moviesList[index], libraryList: Binding.constant([]), didLike: Binding.constant([]), didNotLike: Binding.constant([])) {
                                 withAnimation {
                                     removeMovie(at: index)
                                 }

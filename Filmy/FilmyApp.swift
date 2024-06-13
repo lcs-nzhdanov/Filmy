@@ -12,6 +12,12 @@ struct FilmyApp: App {
     
     @State private var selectedTab = 1
     
+    @State private var libraryList: [MovieDetails] = []
+    
+    @State private var didLike: [MovieDetails] = []
+    @State private var didNotLike: [MovieDetails] = []
+  
+    
     var body: some Scene {
         WindowGroup {
             LandingView(selectedTab: $selectedTab)

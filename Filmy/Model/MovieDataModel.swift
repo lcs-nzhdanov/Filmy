@@ -52,5 +52,3 @@ var Interstellar = MovieDetails(title: "Interstellar", duration_m: 194, date_rel
     
 
 var moviesList: [MovieDetails] = [DunePartTwo, Batman, Interstellar, DunePartTwo, Batman, Interstellar, DunePartTwo, Batman, Interstellar]
-
-var libraryList: [MovieDetails] = []

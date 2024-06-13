@@ -28,7 +28,7 @@ struct LandingView: View {
                     1
                 )
             
-            LibraryPageView()
+            LibraryPageView(libraryList: Binding.constant([]))
                 .preferredColorScheme(.dark)
                 .tabItem {
                     Image(

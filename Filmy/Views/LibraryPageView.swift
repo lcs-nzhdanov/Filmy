@@ -11,6 +11,8 @@ import SwiftUI
 
 struct LibraryPageView: View {
     
+    @Binding var libraryList: [MovieDetails]
+      
     var body: some View {
         
 //        ForEach(0..<moviesList.count, id:\.self) { index in
