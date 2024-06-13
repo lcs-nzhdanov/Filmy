@@ -23,15 +23,13 @@ struct LibraryPageView: View {
         
         NavigationStack {
             VStack {
-                List {
-                    ForEach(0..<libraryList.count, id:\.self) { index in
-                        NavigationLink(
-                            destination: {
-                                MovieDetailsView(movie: libraryList[index])
-                            },
-                            label: { Text("\(libraryList[index].title)")
-                            })
+                List (libraryList) { currentMovie in
+                    NavigationLink {
+                        MovieDetailsView(movie: currentMovie)
+                    } label: {
+                        Text(currentMovie.title)
                     }
+
                 }
                 .listStyle(.plain)
                 .searchable(text: Binding.constant(""))
