@@ -16,7 +16,7 @@ struct HomePageView: View {
     
     @Binding var didLike: [MovieDetails]
     @Binding var didNotLike: [MovieDetails]
-
+    
     // MARK: Computed properties
     
     var body: some View {
@@ -42,8 +42,6 @@ struct HomePageView: View {
                     // Creation of recomended movies
                     ZStack {
                         
-//                        let _ = print(moviesList.count)
-
                         ForEach(Array($moviesList.enumerated()), id:\.offset) { index, $movie in
                             MovieBox(
                                 movie: $movie,
@@ -52,7 +50,8 @@ struct HomePageView: View {
                                 didLike: $didLike,
                                 didNotLike: $didNotLike
                             ) {
-                                // I clear the array here, it will be empty
+                                
+                                // This closure is passed to the `MovieBox` as the `removal` action
                                 withAnimation {
                                     removeMovie(at: index)
                                 }
@@ -61,7 +60,7 @@ struct HomePageView: View {
                     }
                     
                     Spacer()
-                
+                    
                     
                     Spacer()
                 }
@@ -69,7 +68,7 @@ struct HomePageView: View {
         }
     }
     
-    // Removes a movie from the array
+    // Removes a movie from the array after swipe
     func removeMovie(at index: Int) {
         moviesList.remove(at: index)
     }

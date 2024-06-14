@@ -11,11 +11,24 @@ struct MovieDetailsView: View {
     // MARK: Stored Properties
     @Bindable var movie: MovieDetails
     
+    @Binding var libraryList: [MovieDetails]
+    
     var statuses = ["Not Watched", "To Watch", "Watched", "Favourite"]
     
     var body: some View {
         ScrollView {
             VStack {
+                
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        // Action to perform when button is tapped
+                    }) {
+                        Image(systemName: "square.and.pencil")
+                            .resizable()
+                            .frame(width: 24, height: 24)
+                    }
+                }
                 
                 VStack (spacing: 0) {
                     Text(movie.title)
@@ -72,6 +85,27 @@ struct MovieDetailsView: View {
                             ForEach(statuses, id: \.self) { status in
                                 Button(action: {
                                     movie.status = status
+                                    
+                                    
+                                    if movie.status != "Not Watched" {
+                                        if !movie.isInLibrary {      // Check if movie is already there to avoid repetition
+                                            
+                                            movie.isInLibrary = true
+                                            libraryList.append(movie)
+                                            
+                                            print("New status added, ", libraryList.count)
+                                        }
+                                    } else {
+                                        if movie.isInLibrary {
+                                            
+                                            movie.isInLibrary = false
+                                            libraryList.removeAll { currentMovie in
+                                                currentMovie.id == movie.id
+                                            }
+                                            
+                                            print("Movie just got removed", libraryList.count)
+                                        }
+                                    }
                                 }) {
                                     HStack {
                                         Text(status)
@@ -195,5 +229,5 @@ struct MovieDetailsView: View {
     }
 }
 #Preview {
-    MovieDetailsView(movie: DunePartTwo)
+    MovieDetailsView(movie: DunePartTwo, libraryList: Binding.constant([]))
 }

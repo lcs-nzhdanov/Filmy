@@ -25,7 +25,7 @@ struct LibraryPageView: View {
             VStack {
                 List (libraryList) { currentMovie in
                     NavigationLink {
-                        MovieDetailsView(movie: currentMovie)
+                        MovieDetailsView(movie: currentMovie, libraryList: $libraryList)
                     } label: {
                         Text(currentMovie.title)
                     }

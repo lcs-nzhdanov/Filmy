@@ -6,8 +6,9 @@ struct MovieBox: View {
     // Importing movie information
     @Binding var movie: MovieDetails
     
+    //width and height in a two-dimensional coordinate system
     @State private var offset = CGSize.zero
-
+    
     
     @Binding var moviesList: [MovieDetails]
     
@@ -16,14 +17,17 @@ struct MovieBox: View {
     @Binding var didLike: [MovieDetails]
     @Binding var didNotLike: [MovieDetails]
     
-    // MARK: Clarify Meaning
     var removal: (() -> Void)? = nil
+    
     
     // MARK: Computed properties
     
     var body: some View {
         NavigationStack {
             ZStack {
+                
+                // Movie Box UI
+                
                 Rectangle()
                     .fill(Color.black)
                     .frame(width: 325, height: 550)
@@ -81,7 +85,7 @@ struct MovieBox: View {
                             HStack {
                                 Spacer()
                                 
-                                NavigationLink(destination: MovieDetailsView(movie: movie)) {
+                                NavigationLink(destination: MovieDetailsView(movie: movie, libraryList: $libraryList)) {
                                     VStack(spacing: 0) {
                                         Image(systemName: "ellipsis.circle")
                                             .font(.system(size: 44))
@@ -96,11 +100,12 @@ struct MovieBox: View {
                                 
                                 Spacer()
                                 
+                                // Adding a movie to the library button
                                 Button {
                                     movie.isInLibrary.toggle()
                                     dump(movie.isInLibrary)
                                     
-                                    if movie.isInLibrary {
+                                    if movie.isInLibrary {                  // Check if movie is already there to avoid repetition
                                         libraryList.append(movie)
                                     } else {
                                         libraryList.removeAll { currentMovie in
@@ -130,7 +135,6 @@ struct MovieBox: View {
                             Spacer()
                         }
                     }
-                
             }
             // How much card rotates when dragged
             .rotationEffect(.degrees(offset.width / 5.0))
@@ -156,7 +160,6 @@ struct MovieBox: View {
                                 movie.userLiked = true
                                 dump(movie.userLiked)
                                 
-                                
                                 if movie.userLiked && !didLike.contains(where: { currentMovie in
                                     currentMovie.id == movie.id
                                 })  {
@@ -165,7 +168,6 @@ struct MovieBox: View {
                                         currentMovie.id == movie.id
                                     }
                                 }
-                                
                                 print("didLike", didLike.count)
                                 print("didNotLike", didNotLike.count)
                                 
@@ -174,7 +176,6 @@ struct MovieBox: View {
                                 movie.userLiked = false
                                 dump(movie.userLiked)
                                 
-                                
                                 if !movie.userLiked && !didNotLike.contains(where: { currentMovie in
                                     currentMovie.id == movie.id
                                 })  {
@@ -182,14 +183,12 @@ struct MovieBox: View {
                                     didLike.removeAll { currentMovie in
                                         currentMovie.id == movie.id
                                     }
-
                                 }
-                                
                                 print("didLike", didLike.count)
                                 print("didNotLike", didNotLike.count)
                             }
                             
-                            // remove movie
+                            // This line calls the removal closure if it is not nil
                             removal?()
                         } else {
                             offset = .zero
@@ -209,5 +208,3 @@ struct MovieBox: View {
         didNotLike:  Binding.constant([])
     )
 }
-// I just clear the array here, no wonder it will be empty
-// How do I bind corretly, so the data actually transfers??

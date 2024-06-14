@@ -43,11 +43,11 @@ class MovieDetails: Identifiable {
 }
     
 
-var DunePartTwo = MovieDetails(title: "Dune: Part Two", duration_m: 166, date_released: "2024", description: "Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family. Facing a choice between the love of his life and the fate of the universe, he must prevent a terrible future only he can foresee.", genres: ["Sci-fi", "Fantasy", "Drama", "Action"], platformsToWatch: ["Netflix", "Disney", "PrimeVideo"], actorsInvolved: ["Zendaya", "Timothee Chalet"], imbdRating: 9.3, status: "Not wathced", isInLibrary: false, userLiked: false)
+var DunePartTwo = MovieDetails(title: "Dune: Part Two", duration_m: 166, date_released: "2024", description: "Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family. Facing a choice between the love of his life and the fate of the universe, he must prevent a terrible future only he can foresee.", genres: ["Sci-fi", "Fantasy", "Drama", "Action"], platformsToWatch: ["Netflix", "Disney", "PrimeVideo"], actorsInvolved: ["Zendaya", "Timothee Chalet"], imbdRating: 9.3, status: "Not watched", isInLibrary: false, userLiked: false)
 
-var Batman = MovieDetails(title: "Batman", duration_m: 142, date_released: "2023", description: "Some description", genres: ["Sci-fi", "Fantasy", "Drama", "Action"], platformsToWatch: ["Netflix", "Disney", "PrimeVideo"], actorsInvolved: ["Batman", "Joker"], imbdRating: 9.3, status: "Not wathced", isInLibrary: false, userLiked: false)
+var Batman = MovieDetails(title: "Batman", duration_m: 142, date_released: "2023", description: "Some description", genres: ["Sci-fi", "Fantasy", "Drama", "Action"], platformsToWatch: ["Netflix", "Disney", "PrimeVideo"], actorsInvolved: ["Batman", "Joker"], imbdRating: 9.3, status: "Not watched", isInLibrary: false, userLiked: false)
 
-var Interstellar = MovieDetails(title: "Interstellar", duration_m: 194, date_released: "2014", description: "Some description", genres: ["Sci-fi", "Fantasy", "Drama", "Action"], platformsToWatch: ["Netflix", "Disney", "PrimeVideo"], actorsInvolved: ["Cosmonaut", "Tony Stark"], imbdRating: 9.3, status: "Not wathced", isInLibrary: false, userLiked: false)
+var Interstellar = MovieDetails(title: "Interstellar", duration_m: 194, date_released: "2014", description: "Some description", genres: ["Sci-fi", "Fantasy", "Drama", "Action"], platformsToWatch: ["Netflix", "Disney", "PrimeVideo"], actorsInvolved: ["Cosmonaut", "Tony Stark"], imbdRating: 9.3, status: "Not watched", isInLibrary: false, userLiked: false)
     
     
 
