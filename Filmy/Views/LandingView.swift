@@ -67,20 +67,6 @@ struct LandingView: View {
                 .tag(
                     3
                 )
-            
-            ProfilePageView()
-                .preferredColorScheme(.dark)
-                .tabItem {
-                    Image(
-                        systemName: "person.fill"
-                    )
-                    Text(
-                        "Profile"
-                    )
-                }
-                .tag(
-                    4
-                )
         }
         .accentColor(
             .blue
