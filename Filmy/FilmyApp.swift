@@ -12,7 +12,7 @@ struct FilmyApp: App {
     
     @State private var selectedTab = 1
     
-    @State private var moviesList: [MovieDetails] = [DunePartTwo, Interstellar, Batman]
+    @State private var moviesList: [MovieDetails] = [DunePartTwo, Interstellar, Batman, DunePartTwo, Interstellar, Batman, DunePartTwo, DunePartTwo, DunePartTwo]
     
     @State private var libraryList: [MovieDetails] = []
     

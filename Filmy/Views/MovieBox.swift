@@ -153,25 +153,40 @@ struct MovieBox: View {
                             
                             // Check on which side did movie go to determine the like
                             if offset.width > 0 {
-                                
-                                // Add to the didLike array
-                                if !didLike.contains(where: { currentMovie in
-                                    currentMovie.id == movie.id
-                                }) {
-                                    didLike.append(movie)
-                                }
                                 movie.userLiked = true
+                                dump(movie.userLiked)
+                                
+                                
+                                if movie.userLiked && !didLike.contains(where: { currentMovie in
+                                    currentMovie.id == movie.id
+                                })  {
+                                    didLike.append(movie)
+                                    didNotLike.removeAll { currentMovie in
+                                        currentMovie.id == movie.id
+                                    }
+                                }
+                                
+                                print("didLike", didLike.count)
+                                print("didNotLike", didNotLike.count)
+                                
                                 
                             } else if offset.width < 0 {
+                                movie.userLiked = false
+                                dump(movie.userLiked)
                                 
-                                // Add to the didNotLike array
-                                if !didNotLike.contains(where: { currentMovie in
+                                
+                                if !movie.userLiked && !didNotLike.contains(where: { currentMovie in
                                     currentMovie.id == movie.id
-                                }) {
+                                })  {
                                     didNotLike.append(movie)
+                                    didLike.removeAll { currentMovie in
+                                        currentMovie.id == movie.id
+                                    }
+
                                 }
                                 
-                                movie.userLiked = false
+                                print("didLike", didLike.count)
+                                print("didNotLike", didNotLike.count)
                             }
                             
                             // remove movie
