@@ -9,7 +9,7 @@ import Foundation
 
 
 @Observable
-class MovieDetails: Identifiable {
+class MovieDetails: Identifiable, Decodable, Encodable {
     let id = UUID()
     
     let title: String

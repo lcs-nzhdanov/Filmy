@@ -67,6 +67,7 @@ struct LandingView: View {
                 .tag(
                     3
                 )
+            
         }
         .accentColor(
             .blue

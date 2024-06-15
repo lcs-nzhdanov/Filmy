@@ -17,19 +17,7 @@ struct MovieDetailsView: View {
     
     var body: some View {
         ScrollView {
-            VStack {
-                
-                HStack {
-                    Spacer()
-                    Button(action: {
-                        // Action to perform when button is tapped
-                    }) {
-                        Image(systemName: "square.and.pencil")
-                            .resizable()
-                            .frame(width: 24, height: 24)
-                    }
-                }
-                
+            VStack {                
                 VStack (spacing: 0) {
                     Text(movie.title)
                         .font(.title)
