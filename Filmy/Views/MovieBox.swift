@@ -189,11 +189,13 @@ struct MovieBox: View {
                                 print("didNotLike", didNotLike.count)
                             }
                             
-                            RecomendationsGetterView(
-                                didLike: $didLike,
-                                didNotLike: $didNotLike,
-                                moviesList: $moviesList
-                            )
+                            Task {
+                                do {
+                                    _ = try await getMovieRecommendations(didLike: didLike, didNotLike: didNotLike, moviesList: &moviesList)
+                                } catch {
+                                    print("Failed to get movie recommendations: \(error)")
+                                }
+                            }
                             
                             // This line calls the removal closure if it is not nil
                             removal?()

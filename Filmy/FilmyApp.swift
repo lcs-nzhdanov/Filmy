@@ -12,25 +12,25 @@ struct FilmyApp: App {
     
     @State private var selectedTab = 1
     
-    @State private var moviesList: [MovieDetails] = [DunePartTwo, Interstellar, Batman, DunePartTwo, Interstellar, Batman, DunePartTwo, DunePartTwo, DunePartTwo]
+    @State private var moviesList: [MovieDetails] = [DunePartTwo, Batman]
     
     @State private var libraryList: [MovieDetails] = []
     
-    @State private var didLike: [MovieDetails] = [DunePartTwo, Batman]
+    @State private var didLike: [MovieDetails] = []
     @State private var didNotLike: [MovieDetails] = []
   
     
     var body: some Scene {
         WindowGroup {
-//            LandingView(
-//                selectedTab: $selectedTab,
-//                moviesList: $moviesList,
-//                libraryList: $libraryList,
-//                didLike: $didLike,
-//                didNotLike: $didNotLike
-//            )
+            LandingView(
+                selectedTab: $selectedTab,
+                moviesList: $moviesList,
+                libraryList: $libraryList,
+                didLike: $didLike,
+                didNotLike: $didNotLike
+            )
             
-            RecomendationsGetterView()
+//            RecomendationsGetterView()
         }
     }
 }
