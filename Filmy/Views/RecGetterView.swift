@@ -15,9 +15,10 @@ struct RecomendationsGetterView: View {
     // MARK: Stored properties
     
     // Receives arrays with user's preferences
-    @State private var didLike: [MovieDetails] = [DunePartTwo, Interstellar]
-    @State private var didNotLike: [MovieDetails] = [Batman]
+    @Binding var didLike: [MovieDetails]
+    @Binding var didNotLike: [MovieDetails]
     
+    @Binding var moviesList: [MovieDetails]
     
     // The response from ChatGPT
     @State private var response: String? = nil
@@ -97,6 +98,10 @@ struct RecomendationsGetterView: View {
                     // Try to decode ChatGPT's response into an array of movie suggestions
                     movieSuggestion = try decoder.decode([MovieDetails].self, from: data)
                     
+                    
+                    moviesList.append(movieSuggestion[0])
+                    print("COUNT AFTER ADDING A MOVIE: ", moviesList.count)
+                    
                 } catch {
                     debugPrint(error)
                 }
@@ -151,7 +156,7 @@ struct RecomendationsGetterView: View {
         
         // Define the overall question preamble
         let questionPreamble = """
-                    Hi, I will give a number of movies that I recently watched in the JSON format, with eleven name-value pairs describing each movie in detail. I will provide 2 arrays: the ones I liked and did not like. After examining them could you please give me a recomendation of a 2 movies I should watch based on my preferences.
+                    Hi, I will give a number of movies that I recently watched in the JSON format, with eleven name-value pairs describing each movie in detail. I will provide 2 arrays: the ones I liked and did not like. After examining them could you please give me a recomendation of 1 movie I should watch based on my preferences. This movie should be new and not exist in any of arrays I will provide.
                     
                     """
         
@@ -215,5 +220,9 @@ struct RecomendationsGetterView: View {
 }
 
 #Preview {
-    RecomendationsGetterView()
+    RecomendationsGetterView(
+        didLike: .constant([]),
+        didNotLike: .constant([]),
+        moviesList: .constant([])
+    )
 }

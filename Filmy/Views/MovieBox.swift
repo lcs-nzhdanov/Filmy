@@ -148,7 +148,8 @@ struct MovieBox: View {
             // Dragging
             .gesture(
                 DragGesture()
-                    .onChanged { gesture in
+                    .onChanged {
+                        gesture in
                         offset = gesture.translation
                         
                     }
@@ -188,8 +189,16 @@ struct MovieBox: View {
                                 print("didNotLike", didNotLike.count)
                             }
                             
+                            RecomendationsGetterView(
+                                didLike: $didLike,
+                                didNotLike: $didNotLike,
+                                moviesList: $moviesList
+                            )
+                            
                             // This line calls the removal closure if it is not nil
                             removal?()
+                            
+                            
                         } else {
                             offset = .zero
                         }
