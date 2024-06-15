@@ -80,7 +80,7 @@ struct RecomendationsGetterView: View {
                 }
                 .padding()
             }
-            .navigationTitle("Fancy Test")
+            .navigationTitle("Recomendations Engine")
         }
         .onChange(of: response) {
             // When there is a non-nil response from ChatGPT, decode it into an array of suggestions
@@ -184,7 +184,7 @@ struct RecomendationsGetterView: View {
                     """
         
         // Assemble the entire question
-        let question = questionPreamble + likedMoviesPreamble + notLikedMoviesPreamble + questionConclusion
+        let question = questionPreamble + likedMoviesPreamble + likedListInJSON + notLikedMoviesPreamble + notLikedListInJSON + questionConclusion
         // DEBUG
         print("======")
         print(question)
