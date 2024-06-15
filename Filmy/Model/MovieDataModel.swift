@@ -10,7 +10,7 @@ import Foundation
 
 @Observable
 class MovieDetails: Identifiable, Decodable, Encodable {
-    let id = UUID()
+    var id = UUID()
     
     let title: String
     let duration_m: Int

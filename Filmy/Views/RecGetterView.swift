@@ -146,14 +146,7 @@ struct RecomendationsGetterView: View {
             return nil
         }
         
-        // NOTE: See Mr. Gordon to obtain your API key.
-        //
-        //       Add a file named Secrets.swift to a Helpers group in your project.
-        //       The file must be named exactly as shown.
-        //       Define a constant named like this that includes the apiKey you were provided with:
-        //
-        //       let apiKey = "REPLACE_WITH_YOUR_API_KEY"
-        //
+        
         let openAI = OpenAI(apiToken: apiKey)
         
         // Define the overall question preamble
