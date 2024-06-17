@@ -48,30 +48,33 @@ func getMovieRecommendations(didLike: [MovieDetails], didNotLike: [MovieDetails]
     
     // Define the overall question preamble
     let questionPreamble = """
-                Hi, I will give a number of movies that I recently watched in the JSON format, with eleven name-value pairs describing each movie in detail. I will provide 2 arrays: the ones I liked and did not like. After examining them could you please give me a recomendation of 1 movie I should watch based on my preferences. This movie should be new and not exist in any of arrays I will provide.
+                Hi, I will give a number of movies that I recently watched in the JSON format, with eleven name-value pairs describing each movie in detail. I will provide 2 arrays: the ones I liked and did not like. After examining them could you please give me a recomendation of 3 movies I should watch based on my preferences. This movie should be new and not exist in any of arrays I will provide.
                 
                 """
     
     // Define the liked movies preamble
     let likedMoviesPreamble = """
+                
                 I've watched these couple of movies recently and really enjoyed them.
                 
                 """
     
     // Define the not liked movies preamble
     let notLikedMoviesPreamble = """
+                
                 I've watched these movies recently and did not really like them.
                 
                 """
     
     // Define the question conclusion
     let questionConclusion = """
-                Please include only the JSON structure in your response, with no other text before or after your reply.
+                
+                Please include only the JSON structure in your response, with no other text before or after your reply. Respond using plain text and not a code format.
                 
                 When providing JSON structure, please make the following variables having the following values:
                 "status: "Not watched", isInLibrary: false, userLiked: false"
                 
-                Once again, you MUST give only JSON in your response which will include the exact copy of properties from provided JSON earlier, the program functionability depends on this. Do not use any additional symbols, print only JSON
+                Once again, you MUST give only JSON in your response which will include the exact copy of properties from provided JSON earlier, the program functionability depends on this. Do not use any additional symbols, print only JSON in plain text with no code box.
                 
                 """
     
@@ -105,7 +108,11 @@ func getMovieRecommendations(didLike: [MovieDetails], didNotLike: [MovieDetails]
             let decoder = JSONDecoder()
             let data = Data(response.utf8)
             let movieSuggestion = try decoder.decode([MovieDetails].self, from: data)
-            moviesList.append(movieSuggestion[0])
+            
+            dump(movieSuggestion)
+            print(movieSuggestion.count)
+            
+            moviesList += movieSuggestion
             print("COUNT AFTER ADDING A MOVIE ", moviesList.count)
             return movieSuggestion
         }

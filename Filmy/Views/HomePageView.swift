@@ -42,7 +42,10 @@ struct HomePageView: View {
                     // Creation of recomended movies
                     ZStack {
                         
-                        ForEach(Array($moviesList.enumerated()), id:\.offset) { index, $movie in
+                        ForEach(Array($moviesList.enumerated()).reversed(), id: \.offset) { index, $movie in
+                            let reversedIndex = moviesList.count - 1 - index // Adjust the index to count downwards
+                            
+
                             MovieBox(
                                 movie: $movie,
                                 moviesList: $moviesList,
@@ -50,17 +53,19 @@ struct HomePageView: View {
                                 didLike: $didLike,
                                 didNotLike: $didNotLike
                             ) {
+                                print("movie countOOOOOOOO", moviesList.count)
+                                
+                                
+                                print("INDEXINDEXINDEXINDEX: ", reversedIndex)
+                                print(moviesList[reversedIndex].title)
                                 
                                 // This closure is passed to the `MovieBox` as the `removal` action
                                 withAnimation {
-                                    removeMovie(at: index)
+                                    removeMovie(at: reversedIndex)
                                 }
                             }
                         }
                     }
-                    
-                    Spacer()
-                    
                     
                     Spacer()
                 }
@@ -71,6 +76,8 @@ struct HomePageView: View {
     // Removes a movie from the array after swipe
     func removeMovie(at index: Int) {
         moviesList.remove(at: index)
+        print("Count after delete ", moviesList.count)
+        print("Deleted index", index)
     }
 }
 

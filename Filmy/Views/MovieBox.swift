@@ -66,11 +66,8 @@ struct MovieBox: View {
                                     
                                     Text(minutesToHours(lengthMinutes: movie.duration_m))
                                     
-                                    Text("On Netflix")
+                                    Text(listToString(list: movie.platformsToWatch))
                                     
-                                    if didLike.count > 0 {
-                                        Text("hi\(didLike[0].title)")
-                                    }
                                 }
                                 .font(.system(size: 20))
                                 .padding(.bottom, 10)
