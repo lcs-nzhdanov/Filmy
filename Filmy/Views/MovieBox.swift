@@ -17,6 +17,7 @@ struct MovieBox: View {
     @Binding var didLike: [MovieDetails]
     @Binding var didNotLike: [MovieDetails]
     
+    // A closure property for handling the removal of the movie box from the view
     var removal: (() -> Void)? = nil
     
     
@@ -36,6 +37,7 @@ struct MovieBox: View {
                         VStack {
                             VStack (spacing: 0) {
                                 Text(movie.title)
+                                    .multilineTextAlignment(.center)
                                     .foregroundColor(.white)
                                     .font(.title)
                                     .padding(.bottom, 10)
@@ -71,6 +73,7 @@ struct MovieBox: View {
                                 }
                                 .font(.system(size: 20))
                                 .padding(.bottom, 10)
+                                .padding(.horizontal, 5)
                                 .foregroundColor(.white)
                                 
                                 Divider()
@@ -102,23 +105,24 @@ struct MovieBox: View {
                                     movie.isInLibrary.toggle()
                                     dump(movie.isInLibrary)
                                     
-                                    if movie.isInLibrary {                  // Check if movie is already there to avoid repetition
+                                    // Check if movie is already there to avoid repetition
+                                    if movie.isInLibrary {
                                         libraryList.append(movie)
                                     } else {
                                         libraryList.removeAll { currentMovie in
                                             currentMovie.id == movie.id
                                         }
                                     }
-                                    
                                     dump(libraryList.count)
                                     
+                                    // Visualize and change the button
                                 } label: {
                                     VStack (spacing: 0) {
                                         Image(systemName: movie.isInLibrary ? "seal.fill" : "seal")
                                             .font(.system(size: 44))
                                             .padding(.bottom, 3)
                                             .bold()
-                                        Text(movie.isInLibrary ? "In Library" : "To Watch")
+                                        Text(movie.isInLibrary ? "In Library" : "To Library")
                                             .font(.system(size: 18))
                                             .bold()
                                     }
@@ -188,7 +192,7 @@ struct MovieBox: View {
                             
                             Task {
                                 do {
-                                    _ = try await getMovieRecommendations(didLike: didLike, didNotLike: didNotLike, moviesList: &moviesList)
+                                    _ = try await getMovieRecommendations(didLike: didLike, didNotLike: didNotLike, moviesList: &moviesList) // "&" used to create a reference, so func can modify the original variable
                                 } catch {
                                     print("Failed to get movie recommendations: \(error)")
                                 }

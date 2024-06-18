@@ -15,12 +15,6 @@ struct LibraryPageView: View {
       
     var body: some View {
         
-//        ForEach(0..<moviesList.count, id:\.self) { index in
-//            if moviesList[index].isInLibrary {
-//                libraryList.append(moviesList[index])
-//            }
-//        }
-        
         NavigationStack {
             VStack {
                 List (libraryList) { currentMovie in

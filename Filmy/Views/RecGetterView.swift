@@ -11,13 +11,16 @@ import SwiftUI
 
 // Function to get movie recommendations
 func getMovieRecommendations(didLike: [MovieDetails], didNotLike: [MovieDetails], moviesList: inout [MovieDetails]) async throws -> [MovieDetails]? {
+    
     // Encode the list of movies to JSON
     let encoder = JSONEncoder()
     encoder.outputFormatting = .prettyPrinted
     var likedListInJSON = ""
     var notLikedListInJSON = ""
+    
     do {
         var jsonData = try encoder.encode(didLike)
+        
         if let jsonString = String(data: jsonData, encoding: .utf8) {
             // DEBUG
             print("Movies the user has LIKED, encoded in JSON, are:")
@@ -28,7 +31,10 @@ func getMovieRecommendations(didLike: [MovieDetails], didNotLike: [MovieDetails]
             likedListInJSON = jsonString
         }
         
+        
         jsonData = try encoder.encode(didNotLike)
+        
+        
         if let jsonString = String(data: jsonData, encoding: .utf8) {
             // DEBUG
             print("Movies the user did NOT LIKE and not liked, encoded in JSON, are:")
@@ -43,6 +49,7 @@ func getMovieRecommendations(didLike: [MovieDetails], didNotLike: [MovieDetails]
         debugPrint(error)
         return nil
     }
+    
     
     let openAI = OpenAI(apiToken: apiKey)
     
